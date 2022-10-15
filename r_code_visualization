@@ -1,0 +1,23 @@
+ax(healthcare$AvgOfIndividualRate)
+healthcare$AvgOfIndividualTobaccoRate
+healthcare$AvgOfCouple
+
+
+
+
+x<-healthcare$AvgOfIndividualRate!=999999
+x<-healthcare$AvgOfIndividualRate[x]
+IndividualRate<-x[x!=0]
+hist(IndividualRate)
+
+
+
+df<-x[c("StateCode","AvgOfIndividualRate")]
+aggregate(df$AvgOfIndividualRate, list(df$StateCode), FUN=mean) 
+
+
+df<-healthcare[c("StateCode","AvgOfIndividualTobaccoRate")]
+aggregate(df$AvgOfIndividualTobaccoRate, list(df$StateCode), FUN=mean) 
+
+x<-healthcare$LimitQty!=10000
+hist(healthcare$LimitQty[x])
